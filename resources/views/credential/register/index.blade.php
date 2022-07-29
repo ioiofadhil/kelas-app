@@ -38,8 +38,16 @@
 
                                 <div id="credential-register" class="fs-7 mt-3">
                                     <div class="form-floating mb-3">
-                                        <input type="email" name="email" class="form-control rounded-0 border border-opacity-25" id="floatingInput" placeholder="name@example.com">
-                                        <label for="floatingInput">Email address</label>
+                                        <input type="text" name="username" class="form-control rounded-0 border border-opacity-25" id="floatingUsername" placeholder="Your Username" autocomplete="username">
+                                        <label for="floatingUsername">Username</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="tel" name="phone" class="form-control rounded-0 border border-opacity-25" id="floatingPhone" placeholder="Your Phone Number" autocomplete="phone">
+                                        <label for="floatingPhone">Phone</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" name="email" class="form-control rounded-0 border border-opacity-25" id="floatingEmail" placeholder="name@example.com" autocomplete="email">
+                                        <label for="floatingEmail">Email address</label>
                                     </div>
                                     <div class="form-floating">
                                         <input type="password" name="password" class="form-control rounded-0 border border-opacity-25" id="floatingPassword" placeholder="Password">
@@ -50,7 +58,7 @@
                                 <div id="bottom-credential-register" class="d-flex align-items-center mt-2">
                                     <div id="forgot-register">
                                         <span class="fs-7 text-muted">Have an account?</span>
-                                        <a href="{{ route('auth.index_login') }}">
+                                        <a href="{{ route('auth.indexLogin') }}">
                                             <span class="fs-7">Login</span>
                                         </a>
                                     </div>

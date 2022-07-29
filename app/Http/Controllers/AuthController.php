@@ -5,17 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function index_login()
+    public function indexLogin()
     {
         return view('credential.login.index', [
             'title' => 'ProGu Login',
         ]);
     }
 
-    public function index_register()
+    public function indexRegister()
     {
         return view('credential.register.index', [
             'title' => 'ProGu Register',
@@ -25,27 +26,46 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'unique:User,email', 'email'],
-            'password' => ['required', 'min:8'],
+            'email' => ['required'],
+            'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return dd('Login Success');
+
+            return redirect()->intended('/dashboard')->with('success', 'Login Success');
         }
 
-        return dd('Login Failed');
+        return \redirect()->back()->withErrors(['error' => 'Invalid email or password.']);
     }
 
     public function register(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'unique:User,email', 'email'],
-            'password' => ['required', 'min:8'],
-        ]);
+        $credentials = $request->validate(
+            [
+                'username' => ['required', 'unique:users,username'],
+                'phone' => ['required', 'unique:users,phone'],
+                'email' => ['required', 'unique:users,email', 'email'],
+                'password' => ['required', 'min:8'],
+            ]
+        );
+
+        $credentials['password'] = Hash::make($credentials['password']);
 
         User::create($credentials);
 
-        return dd('User Registered');
+        return redirect('/login')->with('success', 'Register success');
+    }
+
+    public function logout(Request $request)
+    {
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('success', 'Logout success');
     }
 }

@@ -123,6 +123,14 @@ th:last-child {
 	letter-spacing: 2px;
 }
 
+.text-alert-success {
+	color: #0F5132 !important;
+}
+
+.text-alert-danger {
+	color: #842029 !important;
+}
+
 .text-d-blue{
 	color: var(--d-blue-color) !important;
 }

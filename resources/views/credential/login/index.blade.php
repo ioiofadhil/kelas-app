@@ -39,7 +39,7 @@
 
                                 <div id="credential-login" class="fs-7 mt-3">
                                     <div class="form-floating mb-3">
-                                        <input type="email" name="email" class="form-control rounded-0 border border-opacity-25" id="floatingInput" placeholder="name@example.com">
+                                        <input type="email" name="email" class="form-control rounded-0 border border-opacity-25" id="floatingInput" placeholder="name@example.com" autocomplete="email">
                                         <label for="floatingInput">Email address</label>
                                     </div>
                                     <div class="form-floating">
@@ -67,7 +67,7 @@
 
                                 <div id="desc-login" class="mt-2 text-start">
                                     <span class="fs-7 my-0 text-muted">Don't have an account?</span>
-                                    <a href="{{ route('auth.index_register') }}" class="fs-7 my-0">
+                                    <a href="{{ route('auth.indexRegister') }}" class="fs-7 my-0">
                                         <span>Sign Up</span>
                                     </a>
                                 </div>

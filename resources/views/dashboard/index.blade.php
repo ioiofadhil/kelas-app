@@ -4,7 +4,7 @@
         <div class="container-fluid px-0">
             <div class="d-flex" style="min-height: 100vh">
 
-                <div id="sidebar-maximize-dash" class="border-end">
+                <div id="sidebar-maximize-dash" class="border-end sidebar-maximize-dash">
 
                     <div id="logo-dash" class="px-4 py-5">
                         <a href="/">
@@ -75,12 +75,18 @@
                             <span class="fs-6 text-muted ls-1 pe-2"><i class="fa-solid fa-user-shield fa-fw"></i></span>
                             <span class="fs-6 text-muted fw-normal">Admin</span>
                         </a>
-
+                        <form action="{{ route('auth.logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="px-0 border-0 bg-transparent py-3">
+                                <span class="fs-6 text-muted ls-1 pe-2"><i class="fa-solid fa-door-open fa-fw"></i></span>
+                                <span class="fs-6 text-muted fw-normal">Logout</span>
+                            </button>
+                        </form>
                     </div>
 
                 </div>
 
-                <div id="sidebar-minimize-dash" class="border-end d-none text-center">
+                <div id="sidebar-minimize-dash" class="border-end d-none text-center sidebar-minimize-dash">
 
                     <div id="sidebar-1-dash" class="px-4">
 
@@ -153,12 +159,13 @@
 
                     <div id="logo-dash" class="px-4 py-4 border-bottom d-flex align-items-center">
                         <a id="minimize-sidebar" class="text-muted me-auto">
-                            {{-- <span class="fw-light me-2" style="font-size: 13px;"><i class="fa-solid fa-chevron-left fa-fw"></i></span><span class="text-d-blue fs-6">Back</span> --}}
+                            <span class="fw-light me-2 sidebar-maximize-dash" style="font-size: 13px;"><i class="fa-solid fa-chevron-left fa-fw"></i></span>
+                            <span class="fw-light me-2 sidebar-minimize-dash d-none" style="font-size: 13px;"><i class="fa-solid fa-chevron-right fa-fw"></i></span>
                         </a>
                         <a id="dropdown-dash" class="d-flex align-items-center text-d-blue">
                             <div id="name-dash" class="text-end">
-                                <span class="fs-6 text-muted me-2 d-block">Ahmad Giofadhil</span>
-                                <span class="fs-7 text-muted me-2">giofadhil.ahmad@gmail.com</span>
+                                <span class="fs-7 text-muted me-2 d-block">{{ Auth::user()->username }}</span>
+                                <span class="fs-7 text-muted me-2">{{ Auth::user()->email }}</span>
                             </div>
                             <span><img src="pub/images/avatar.jpg" class="rounded-circle" width="40" height="40" alt=""></span>
                             <span class="ms-2" style="font-size: 13px;"><i class="fa-solid fa-chevron-down"></i></span>
@@ -169,7 +176,7 @@
                         <h1 class="fs-3 my-0 text-d-blue ls-2 fw-normal">Candidates</h1>
                     </div>
 
-                    <div id="content-dash" class="px-4 pb-3 d-flex border-bottom align-items-center">
+                    <div id="header-dash-2" class="px-4 pb-3 d-flex border-bottom align-items-center">
                         <div class="py-2 me-2">
                             <span href="" class="rounded-pill border border-dark border-opacity-25 py-2 px-4 fs-7">
                                 <span class="bg-white me-2 text-muted"><i class="fa-solid fa-magnifying-glass fa-fw"></i></span>
@@ -191,50 +198,39 @@
                                     <th class="py-2 px-4 fw-normal" style="width: 50px;">
                                         <input class="form-check-input" type="checkbox" value="all">
                                     </th>
-                                    <th class="py-2 fw-normal fs-7" style="width: 55px;"></th>
-                                    <th class="py-2 pe-4 fw-normal fs-7">Name</th>
-                                    <th class="py-2 px-4 fw-normal fs-7">Position</th>
+                                    <th class="py-2 pe-4 fw-normal fs-7">Username</th>
+                                    <th class="py-2 px-4 fw-normal fs-7">Email</th>
                                     <th class="py-2 px-4 fw-normal fs-7">Phone</th>
                                     <th class="py-2 px-4 fw-normal fs-7">Action</th>
                                 </tr>
                                 <tbody id="candidate-body">
-                                    <tr>
-                                        <td class="py-2 px-4"><input class="form-check-input" type="checkbox" value=""></td>
-                                        <td class="py-3">
-                                            <img src="pub/images/gio.jpeg" class="rounded-circle" width="40" height="40" alt="">
-                                        </td>
-                                        <td class="py-2 pe-4">
-                                            <span class="fs-7 d-block fw-normal">Ahmad Giofadhil</span>
-                                        </td>
-                                        <td class="py-2 px-4">
-                                            <span class="fs-7 text-muted ls-1">Web Developer</span>
-                                        </td>
-                                        <td class="py-2 px-4 fs-7 ls-1">+62 0123456789</td>
-                                        <td class="py-2 px-4 fs-7 ls-1">
-                                            <a class="py-1 px-2 bg-light text-d-blue btn-d-blue border rounded"><i class="fa-solid fa-pen-to-square fa-fw"></i></a>
-                                            <a class="py-1 px-2 bg-light text-d-blue btn-d-blue border rounded"><i class="fa-solid fa-trash-can fa-fw"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-2 px-4"><input class="form-check-input" type="checkbox" value=""></td>
-                                        <td class="py-3">
-                                            <img src="pub/images/avatar.jpg" class="rounded-circle" width="40" height="40" alt="">
-                                        </td>
-                                        <td class="py-2 pe-4">
-                                            <span class="fs-7 d-block fw-normal">Godam R.</span>
-                                        </td>
-                                        <td class="py-2 px-4">
-                                            <span class="fs-7 text-muted ls-1">Web Developer</span>
-                                        </td>
-                                        <td class="py-2 px-4 fs-7 ls-1">+62 987654321</td>
-                                        <td class="py-2 px-4 fs-7 ls-1">
-                                            <a class="py-1 px-2 bg-light text-d-blue text-white btn-d-blue border rounded"><i class="fa-solid fa-pen-to-square fa-fw"></i></a>
-                                            <a class="py-1 px-2 bg-light text-d-blue text-white btn-d-blue border rounded"><i class="fa-solid fa-trash-can fa-fw"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            <td class="py-2 px-4"><input class="form-check-input" type="checkbox" value=""></td>
+                                            <td class="py-2 pe-4">
+                                                <span class="fs-7 d-block fw-normal">{{ $item->username }}</span>
+                                            </td>
+                                            <td class="py-2 px-4">
+                                                <span class="fs-7 text-muted ls-1">{{ $item->email }}</span>
+                                            </td>
+                                            <td class="py-2 px-4 fs-7 ls-1">{{ $item->phone }}</td>
+                                            <td class="py-2 px-4 fs-7 ls-1">
+                                                <a class="py-1 px-2 bg-light text-d-blue text-white btn-d-blue border rounded"><i class="fa-solid fa-eye fa-fw"></i></a>
+                                                <a class="py-1 px-2 bg-light text-d-blue btn-d-blue border rounded"><i class="fa-solid fa-pen-to-square fa-fw"></i></a>
+                                                <form action="{{ route('dashboard.destroy', $item->id) }}" method="POST" class="d-inline">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" class="py-1 px-2 bg-light text-d-blue btn-d-blue border rounded">
+                                                        <span><i class="fa-solid fa-trash-can fa-fw"></i></span>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
+                        <div id="pagination-container"></div>
                     </div>
 
                 </div>

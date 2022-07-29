@@ -17,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/', HomeController::class);
-Route::resource('dashboard', DashboardController::class);
+Route::resource('dashboard', DashboardController::class)->middleware('Secure');
 
-Route::get('/login', [AuthController::class, 'index_login'])->name('auth.index_login');
+Route::get('/login', [AuthController::class, 'indexLogin'])->name('auth.indexLogin');
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('/register', [AuthController::class, 'index_register'])->name('auth.index_register');
+
+Route::get('/register', [AuthController::class, 'indexRegister'])->name('auth.indexRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');

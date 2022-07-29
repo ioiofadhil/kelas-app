@@ -16,10 +16,9 @@
 </head>
 
 <body>
-
     @if ($errors->any())
         <div class="alert alert-danger position-absolute top-0 start-50 translate-middle-x m-3" style="z-index: 2">
-            <a class="position-absolute top-0 end-0 bg-transparent fs-6 border-0 text-d-blue"><i class="fa-solid fa-xmark fa-fw"></i></a>
+            <a class="position-absolute top-0 end-0 bg-transparent fs-6 border-0 text-alert-danger fw-lighter m-1"><i class="fa-solid fa-xmark fa-fw"></i></a>
             @foreach ($errors->all() as $error)
                 <div id="loop-alert" class="py-2 px-4">
                     <span class="me-1">
@@ -30,6 +29,20 @@
                     </span>
                 </div>
             @endforeach
+        </div>
+    @endif
+
+    @if (session('success'))
+        <div class="alert alert-success position-absolute top-0 start-50 translate-middle-x m-3" style="z-index: 2">
+            <a class="position-absolute top-0 end-0 bg-transparent fs-6 border-0 text-alert-success fw-lighter m-1"><i class="fa-solid fa-xmark fa-fw"></i></a>
+            <div id="loop-alert" class="py-2 px-4">
+                <span class="me-1">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </span>
+                <span>
+                    {{ session('success') }}
+                </span>
+            </div>
         </div>
     @endif
 

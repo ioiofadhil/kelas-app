@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -13,8 +17,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $user = User::where('level', 1)->get();
+
         return view('dashboard.index', [
             'title' => 'ProGu Dashboard',
+            'data' => $user,
         ]);
     }
 
@@ -81,6 +88,7 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('dashboard.index')->with('success', 'User has been deleted');
     }
 }
