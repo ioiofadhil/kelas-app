@@ -1,0 +1,128 @@
+:root {
+	--bs-blue: #0d6efd !important;
+	--bs-dark: rgb(33, 37, 41) !important;
+	--light-color: #EEECF1 !important;
+	--d-blue-color: #0E1E40 !important;
+}
+
+a {
+	text-decoration: none !important;
+	cursor: pointer !important;
+}
+
+input:focus {
+	outline: none !important;
+}
+
+td:first-child,
+th:first-child {
+  border-radius: 30px 0 0 30px;
+}
+
+td:last-child,
+th:last-child {
+  border-radius: 0 30px 30px 0;
+}
+
+#body-index{
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    to right,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 50%,
+    var(--d-blue-color) 50%,
+    var(--d-blue-color) 100%
+  );
+}
+
+#body-login{
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    to right,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 50%,
+    #F3F4F8 50%,
+    #F3F4F8 100%
+  );
+}
+
+#button-wrapper>a:hover {
+	color: var(--d-blue-color) !important;
+	background-color: white !important;
+}
+
+#candidates {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#nav-left>a>img{
+	width: 110px;
+	height: 65px;
+}
+
+#nav-right-login>a>span>i:hover{
+	color: var(--bs-blue) !important;
+}
+
+#button-login button:hover {
+	background-color: white !important;
+	color: var(--d-blue-color) !important;
+}
+
+#back-login a:hover {
+	background-color: white !important;
+	color: var(--d-blue-color) !important;
+}
+
+.bg-d-blue {
+	background-color: var(--d-blue-color) !important;
+}
+
+.bg-light {
+	background-color: var(--light-color) !important;
+}
+
+.bg-white-special {
+	background: rgba(255, 255, 255, 0.9);
+}
+
+.btn-d-blue:hover {
+	background-color: white !important;
+	color: var(--d-blue-color) !important;
+}
+
+.btn-white-io:hover {
+	background-color: var(--d-blue-color) !important;
+	color: white !important;
+}
+
+.fs-7{
+	font-size: 12px;
+}
+
+.lh-c5{
+	line-height:0.5;
+}
+
+.lh-1{
+	line-height: 1;
+}
+
+.lh-2{
+	line-height: 2;
+}
+
+.ls-1{
+	letter-spacing: 1px;
+}
+
+.ls-2{
+	letter-spacing: 2px;
+}
+
+.text-d-blue{
+	color: var(--d-blue-color) !important;
+}
